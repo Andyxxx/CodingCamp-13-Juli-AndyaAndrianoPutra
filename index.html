@@ -1,12 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-    <h1>Hello, World!</h1>
-    <p>Mini project Coding Camp </p>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+    <div class="header-left">
+      <div id="greeting-text" class="greeting"></div>
+      <div id="datetime" class="datetime"></div>
+    </div>
+    <div class="header-right">
+      <button id="theme-toggle" class="btn-icon" title="Toggle dark/light mode">🌙</button>
+    </div>
+  </header>
+
+  <!-- ===== MAIN ===== -->
+  <main class="dashboard">
+
+    <!-- GREETING CARD -->
+    <section class="card greeting-card">
+      <div class="greeting-name-row">
+        <span id="greeting-name" class="greeting-name">Hello, Friend!</span>
+        <button id="edit-name-btn" class="btn-icon" title="Change name">✏️</button>
+      </div>
+      <div id="name-form" class="name-form hidden">
+        <input type="text" id="name-input" class="input" placeholder="Enter your name..." maxlength="30" />
+        <button id="save-name-btn" class="btn btn-primary">Save</button>
+      </div>
+    </section>
+
+    <!-- FOCUS TIMER CARD -->
+    <section class="card timer-card">
+      <h2 class="card-title">⏱ Focus Timer</h2>
+      <div class="timer-settings">
+        <label for="timer-duration">Duration (minutes):</label>
+        <input type="number" id="timer-duration" class="input input-small" value="25" min="1" max="120" />
+        <button id="apply-duration-btn" class="btn btn-secondary">Apply</button>
+      </div>
+      <div id="timer-display" class="timer-display">25:00</div>
+      <div class="timer-controls">
+        <button id="timer-start" class="btn btn-primary">▶ Start</button>
+        <button id="timer-stop" class="btn btn-secondary">⏸ Stop</button>
+        <button id="timer-reset" class="btn btn-ghost">↺ Reset</button>
+      </div>
+      <div id="timer-status" class="timer-status"></div>
+    </section>
+
+    <!-- TO-DO LIST CARD -->
+    <section class="card todo-card">
+      <h2 class="card-title">✅ To-Do List</h2>
+      <div class="todo-controls">
+        <input type="text" id="todo-input" class="input" placeholder="Add a new task..." maxlength="100" />
+        <button id="todo-add-btn" class="btn btn-primary">Add</button>
+      </div>
+      <div id="todo-error" class="error-msg hidden"></div>
+      <div class="todo-sort-row">
+        <label for="sort-select">Sort by:</label>
+        <select id="sort-select" class="input input-small">
+          <option value="default">Default</option>
+          <option value="asc">A → Z</option>
+          <option value="desc">Z → A</option>
+          <option value="done">Done last</option>
+        </select>
+      </div>
+      <ul id="todo-list" class="todo-list"></ul>
+    </section>
+
+    <!-- QUICK LINKS CARD -->
+    <section class="card links-card">
+      <h2 class="card-title">🔗 Quick Links</h2>
+      <div class="links-form">
+        <input type="text" id="link-name" class="input" placeholder="Label (e.g. GitHub)" maxlength="30" />
+        <input type="url" id="link-url" class="input" placeholder="URL (e.g. https://github.com)" />
+        <button id="link-add-btn" class="btn btn-primary">Add</button>
+      </div>
+      <div id="links-error" class="error-msg hidden"></div>
+      <div id="links-grid" class="links-grid"></div>
+    </section>
+
+  </main>
+
+  <script src="js/app.js"></script>
 </body>
 </html>
