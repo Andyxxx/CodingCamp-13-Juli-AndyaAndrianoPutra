@@ -434,15 +434,6 @@ section::before {
 #task-widget::before   { content: '✅ Tasks'; }
 #link-widget::before   { content: '🔗 Quick Links'; }
 
-/* ============================================================
-   Error / alert spans
-   ============================================================ */
-[role="alert"]:not(:empty):not(#storage-warning):not(#timer-alert) {
-  color: var(--color-error);
-  font-size: 0.82rem;
-  display: block;
-  margin-top: 4px;
-}
 
 /* ============================================================
    Utility
