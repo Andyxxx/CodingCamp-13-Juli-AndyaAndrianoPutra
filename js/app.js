@@ -18,11 +18,14 @@ const KEY_LINKS             = 'ndt_links';
 const StorageService = (() => {
   let available = true;
   let warnShown = false;
-  try {
-    localStorage.setItem('_ndt_test', '1');
-    localStorage.removeItem('_ndt_test');
-  } catch (e) {
-    available = false;
+  function checkAvailability() {
+    try {
+      localStorage.setItem('_ndt_test', '1');
+      localStorage.removeItem('_ndt_test');
+      available = true;
+    } catch (e) {
+      available = false;
+    }
   }
   function showWarning() {
     if (warnShown) return;
@@ -31,6 +34,7 @@ const StorageService = (() => {
     if (el) el.hidden = false;
   }
   return {
+    init() { checkAvailability(); },
     isAvailable() { return available; },
     get(key) {
       try { const v = localStorage.getItem(key); return v === null ? null : JSON.parse(v); }
@@ -421,15 +425,12 @@ const LinkManager = (() => {
 // ------------------------------------------------------------
 const DashboardApp = {
   init() {
+    StorageService.init();
     ThemeController.init();
     GreetingWidget.init();
     TimerModule.init();
     TaskManager.init();
     LinkManager.init();
-    if (!StorageService.isAvailable()) {
-      const w = document.getElementById('storage-warning');
-      if (w) w.hidden = false;
-    }
   }
 };
 
