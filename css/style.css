@@ -437,7 +437,7 @@ section::before {
 /* ============================================================
    Error / alert spans
    ============================================================ */
-[role="alert"]:not(:empty) {
+[role="alert"]:not(:empty):not(#storage-warning):not(#timer-alert) {
   color: var(--color-error);
   font-size: 0.82rem;
   display: block;
@@ -448,6 +448,7 @@ section::before {
    Utility
    ============================================================ */
 .hidden { display: none !important; }
+[hidden]  { display: none !important; }
 
 /* ============================================================
    Responsive — single column on mobile
